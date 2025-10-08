@@ -22,13 +22,13 @@ bsObj = BeautifulSoup(html, "lxml")
 count = 0
 # 將其中日期、NTD/USD 兩個欄位的名稱與資料轉存為csv
 # 資料位置
-for single_tr in bsObj.find("table", {"class": "DataTable2"}).findAll("tr"):
+for single_tr in bsObj.find("table", {"class": "DataTable2"}).find_all("tr"):
     if count == 0:
         # 擷取資料位置
-        cell = single_tr.findAll("th")
+        cell = single_tr.find_all("th")
     else:
         # 擷取資料位置
-        cell = single_tr.findAll("td")
+        cell = single_tr.find_all("td")
     F0 = cell[0].text
     F1 = cell[1].text
     data = [[F0, F1]]
